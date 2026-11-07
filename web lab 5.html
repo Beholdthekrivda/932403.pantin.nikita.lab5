@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Личная страница кулинара и фуд-блогера: фирменные блюда, ингредиенты недели, обратная связь.">
+  <title>Кулинар и фуд-блогер — Пантин Никита</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <header class="page-header">
+    <p class="site-name">Кулинар и фуд-блогер</p>
+    <h1>Пантин Никита</h1>
+
+    <p class="subtitle">
+      Личная страница кулинара и фуд-блогера, подражателя Артемию Абрамову
+    </p>
+
+    <p class="subtitle">
+      Увлекаюсь приготовлением пищи из того, что было в холодильнике,
+      а также создаю новые рецепты из самых дешёвых продуктов
+    </p>
+
+    <!-- Навигация на Flexbox -->
+    <nav class="main-nav" aria-label="Основная навигация">
+      <ul class="nav-list">
+        <li><a href="#dishes">Фирменные блюда</a></li>
+        <li><a href="#recipes">Мои рецепты</a></li>
+        <li><a href="#ingredients">Ингредиенты недели</a></li>
+        <li><a href="#about">Любимая кухня</a></li>
+        <li><a href="#feedback">Обратная связь</a></li>
+      </ul>
+    </nav>
+
+    <button id="theme-btn" class="btn btn-ghost" type="button" aria-pressed="false">
+      Тёмная тема
+    </button>
+  </header>
+
+  <main id="main" class="layout">
+    <div class="content-area">
+
+      <!-- Секция карточек на Flexbox -->
+      <section id="dishes" class="section" aria-labelledby="dishes-title">
+        <h2 id="dishes-title">Фирменные блюда</h2>
+
+        <div class="cards">
+          <article class="card dish-card">
+            <img
+              class="card-image"
+              src="images/plov.jpg"
+              alt="Плов с морковью"
+              width="640"
+              height="420"
+              loading="lazy"
+            >
+
+            <div class="card-body">
+              <h3>Плов с морковью</h3>
+              <p>
+                Классика студенческой кухни: рис, морковь, лук и растительное масло
+              </p>
+
+              <dl class="dish-meta">
+                <div class="meta-item">
+                  <dt>Время</dt>
+                  <dd>45 мин</dd>
+                </div>
+
+                <div class="meta-item">
+                  <dt>Ккал</dt>
+                  <dd>320</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="card dish-card">
+            <img
+              class="card-image"
+              src="images/borch.jpg"
+              alt="Борщ из лука"
+              width="640"
+              height="420"
+              loading="lazy"
+            >
+
+            <div class="card-body">
+              <h3>Борщ из лука</h3>
+              <p>
+                Когда свёкла — это роскошь: наваристый суп из лука, капусты и томатной пасты
+              </p>
+
+              <dl class="dish-meta">
+                <div class="meta-item">
+                  <dt>Время</dt>
+                  <dd>50 мин</dd>
+                </div>
+
+                <div class="meta-item">
+                  <dt>Ккал</dt>
+                  <dd>210</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="card dish-card">
+            <img
+              class="card-image"
+              src="images/kotlets.jpg"
+              alt="Котлеты с рисом"
+              width="640"
+              height="420"
+              loading="lazy"
+            >
+
+            <div class="card-body">
+              <h3>Котлеты с рисом</h3>
+              <p>
+                Сытно и сердито: котлеты с добавлением риса, чтобы хватило на весь день
+              </p>
+
+              <dl class="dish-meta">
+                <div class="meta-item">
+                  <dt>Время</dt>
+                  <dd>35 мин</dd>
+                </div>
+
+                <div class="meta-item">
+                  <dt>Ккал</dt>
+                  <dd>290</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Лабораторная №5: рецепты (DOM + localStorage) -->
+      <section id="recipes" class="section" aria-labelledby="recipes-title">
+        <h2 id="recipes-title">Мои рецепты</h2>
+        <p class="section-note">
+          Добавляйте рецепты и удаляйте их. Список и тема сохраняются в браузере.
+        </p>
+
+        <div class="toolbar">
+          <button id="add-recipe-btn" class="btn" type="button">Добавить рецепт</button>
+          <button id="remove-last-btn" class="btn btn-secondary" type="button">Удалить последний</button>
+          <button id="toggle-recipes-btn" class="btn btn-secondary" type="button" aria-expanded="true" aria-controls="recipes-list">Свернуть рецепты</button>
+        </div>
+
+        <div id="recipes-list" class="recipes-list" aria-live="polite">
+          <p class="empty-note hidden">Рецептов пока нет. Нажмите «Добавить рецепт».</p>
+        </div>
+      </section>
+
+      <!-- Grid-галерея ингредиентов -->
+      <section id="ingredients" class="section" aria-labelledby="ingredients-title">
+        <h2 id="ingredients-title">Ингредиенты недели</h2>
+
+        <div class="ingredients-grid">
+          <article class="ingredient-card">
+            <img
+              src="images/carrots.jpg"
+              alt="Морковь"
+              width="640"
+              height="420"
+              loading="lazy"
+            >
+
+            <div class="ingredient-body">
+              <h3>Морковь</h3>
+              <p>
+                Бюджетный источник бета-каротина и сладкая база для зажарки
+              </p>
+            </div>
+          </article>
+
+          <article class="ingredient-card">
+            <img
+              src="images/onion.jpg"
+              alt="Репчатый лук"
+              width="640"
+              height="420"
+              loading="lazy"
+            >
+
+            <div class="ingredient-body">
+              <h3>Репчатый лук</h3>
+              <p>
+                Ароматная основа для супов, подлив и вторых блюд
+              </p>
+            </div>
+          </article>
+
+          <article class="ingredient-card">
+            <img
+              src="images/rice.jpg"
+              alt="Рис"
+              width="640"
+              height="420"
+              loading="lazy"
+            >
+
+            <div class="ingredient-body">
+              <h3>Рис</h3>
+              <p>
+                Сытный гарнир и основа для плова, котлет и быстрых блюд
+              </p>
+            </div>
+          </article>
+
+          <article class="ingredient-card">
+            <img
+              src="images/sausages.jpg"
+              alt="Сосиски"
+              width="640"
+              height="420"
+              loading="lazy"
+            >
+
+            <div class="ingredient-body">
+              <h3>Сосиски</h3>
+              <p>
+                Быстрый белковый ингредиент для студенческого меню
+              </p>
+            </div>
+          </article>
+
+          <article class="ingredient-card">
+            <img
+              src="images/cabbage.jpg"
+              alt="Капуста"
+              width="640"
+              height="420"
+              loading="lazy"
+            >
+
+            <div class="ingredient-body">
+              <h3>Капуста</h3>
+              <p>
+                Недорогой источник клетчатки и объема для супов
+              </p>
+            </div>
+          </article>
+
+          <article class="ingredient-card">
+            <img
+              src="images/tomato.jpg"
+              alt="Томатная паста"
+              width="640"
+              height="420"
+              loading="lazy"
+            >
+
+            <div class="ingredient-body">
+              <h3>Томатная паста</h3>
+              <p>
+                Насыщенный вкус, цвет и основа для бюджетного борща
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Форма обратной связи из лабораторной №2 -->
+      <section id="feedback" class="section feedback" aria-labelledby="feedback-title">
+        <h2 id="feedback-title">Обратная связь</h2>
+
+        <form action="#" method="post">
+          <div class="form-group">
+            <label for="name">Имя</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="message">Сообщение</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              required
+            ></textarea>
+          </div>
+
+          <button class="submit-btn" type="submit">
+            Отправить
+          </button>
+        </form>
+      </section>
+    </div>
+
+    <aside id="about" class="aside" aria-labelledby="about-title">
+      <h2 id="about-title">Любимая кухня</h2>
+
+      <p>
+        Моя любимая кухня — дешёвая
+      </p>
+
+      <p>
+        Любимый ингредиент — пластилиновые сосиски за 30 рублей
+      </p>
+    </aside>
+  </main>
+
+  <footer class="page-footer">
+    <p>© Пантин Никита, 2026</p>
+    <p><a class="footer-link" href="#main">Наверх</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
